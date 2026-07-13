@@ -1,6 +1,7 @@
 "use client";
 
-import Link from "next/link";
+import React, { useEffect } from "react";
+import Link from "../components/TransitionLink";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -36,6 +37,21 @@ const teamMembers = [
 ];
 
 export default function AboutPage() {
+  useEffect(() => {
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".reveal-text").forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -51,11 +67,13 @@ export default function AboutPage() {
               [EST. 2024]
             </span>
             <h1
-              className="text-[64px] md:text-[120px] font-black mb-8 uppercase leading-[0.9]"
+              className="text-[64px] md:text-[120px] font-black mb-8 uppercase tracking-tighter"
               style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.04em" }}
             >
-              Aggressive <br />
-              <span className="bg-primary-container px-4 text-on-primary-container border-[4px] border-on-background">Functionalism</span>
+              <span className="block leading-[0.9]">Aggressive</span>
+              <span className="inline-block mt-6 bg-primary-container px-6 py-2 text-on-primary-container border-[4px] border-on-background leading-none">
+                Functional
+              </span>
             </h1>
             <p
               className="text-[20px] md:text-[24px] max-w-2xl text-on-surface-variant font-medium leading-relaxed mt-8"
@@ -144,8 +162,12 @@ export default function AboutPage() {
               { title: "Purity", desc: "Code is poetry when it's lean. We write clean, proprietary solutions.", icon: "filter_tilt_shift", bg: "bg-background", text: "text-on-background" },
               { title: "Impact", desc: "Design that demands attention. We don't build to blend in.", icon: "cognition", bg: "bg-on-background", text: "text-primary-container" },
             ].map((value, i) => (
-              <div key={i} className={`group relative p-10 border-[6px] border-on-background ${value.bg} neo-shadow transition-all hover:translate-x-1 hover:translate-y-1 h-96 flex flex-col justify-end overflow-hidden`}>
-                <span className={`material-symbols-outlined text-[120px] absolute -top-4 -right-4 opacity-10 group-hover:scale-110 transition-transform ${value.text}`}>
+              <div
+                key={i}
+                className={`group relative p-10 border-[6px] border-on-background ${value.bg} neo-shadow hover:translate-x-1 hover:translate-y-1 h-96 flex flex-col justify-end overflow-hidden transition-[transform,box-shadow,opacity] duration-200 ease-[var(--ease-out)] active:scale-[0.98] reveal-text`}
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                <span className={`material-symbols-outlined text-[120px] absolute -top-4 -right-4 opacity-10 group-hover:scale-110 transition-transform duration-300 ease-[var(--ease-out)] ${value.text}`}>
                   {value.icon}
                 </span>
                 <h3
@@ -185,11 +207,12 @@ export default function AboutPage() {
             {teamMembers.map((member, i) => (
               <div
                 key={i}
-                className="border-[6px] border-on-background bg-background overflow-hidden group neo-shadow-sm hover:neo-shadow transition-all"
+                className="border-[6px] border-on-background bg-background overflow-hidden group neo-shadow-sm hover:neo-shadow transition-[transform,box-shadow,opacity] duration-150 ease-[var(--ease-out)] active:scale-[0.98] reveal-text"
+                style={{ transitionDelay: `${i * 50}ms` }}
               >
                 <div className="aspect-[3/4] bg-on-background relative overflow-hidden">
                   <div
-                    className="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    className="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-[transform,filter] duration-350 ease-[var(--ease-out)]"
                     style={{ backgroundImage: `url('${member.image}')` }}
                   ></div>
                   <div className="absolute bottom-0 left-0 bg-primary-container p-3 border-t-[4px] border-r-[4px] border-on-background">

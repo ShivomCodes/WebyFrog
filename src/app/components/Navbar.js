@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "./TransitionLink";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
@@ -33,7 +33,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-[14px] font-bold uppercase tracking-wide transition-all ${
+              className={`text-[14px] font-bold uppercase tracking-wide transition-colors duration-150 ease-[var(--ease-out)] active:scale-95 inline-block ${
                 pathname === link.href
                   ? "text-primary underline decoration-4 underline-offset-8"
                   : "text-on-background hover:text-primary"
@@ -45,7 +45,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            className="bg-primary-container text-on-primary-container px-6 py-3 border-[4px] border-on-background neo-shadow-sm btn-neo transition-all text-[14px] font-bold uppercase"
+            className="bg-primary-container text-on-primary-container px-6 py-3 border-[4px] border-on-background neo-shadow-sm btn-neo text-[14px] font-bold uppercase"
             style={{ fontFamily: "var(--font-label)" }}
           >
             START A PROJECT
@@ -54,7 +54,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-on-background p-2 border-[3px] border-on-background active:bg-surface-container"
+          className="md:hidden text-on-background p-2 border-[3px] border-on-background active:bg-surface-container transition-transform duration-100 ease-[var(--ease-out)] active:scale-95"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
@@ -73,7 +73,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={`text-[18px] font-bold uppercase ${
+              className={`text-[18px] font-bold uppercase transition-colors duration-150 ease-[var(--ease-out)] active:scale-95 inline-block ${
                 pathname === link.href ? "text-primary" : "text-on-background"
               }`}
               style={{ fontFamily: "var(--font-display)" }}
@@ -84,7 +84,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="bg-primary-container text-on-primary-container px-6 py-4 border-[4px] border-on-background neo-shadow-sm text-center font-bold uppercase"
+            className="bg-primary-container text-on-primary-container px-6 py-4 border-[4px] border-on-background neo-shadow-sm text-center font-bold uppercase active:scale-[0.98] transition-transform duration-100 ease-[var(--ease-out)]"
             style={{ fontFamily: "var(--font-label)" }}
           >
             START A PROJECT

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "./components/TransitionLink";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -49,13 +50,13 @@ export default function HomePage() {
             Digital Brutality.
           </p>
           <div className="reveal-text" style={{ transitionDelay: "0.4s" }}>
-            <button
-              type="button"
-              className="bg-primary-container text-on-primary-container px-12 py-6 border-[8px] border-on-background hard-pop uppercase tracking-tighter text-[24px] md:text-[32px] font-extrabold"
+            <Link
+              href="/contact"
+              className="bg-primary-container text-on-primary-container px-12 py-6 border-[8px] border-on-background hard-pop uppercase tracking-tighter text-[24px] md:text-[32px] font-extrabold inline-block text-center cursor-pointer"
               style={{ fontFamily: "var(--font-display)" }}
             >
               START A PROJECT
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -121,14 +122,15 @@ export default function HomePage() {
             ].map((service, i) => (
               <div
                 key={i}
-                className="bg-surface-container-lowest border-[4px] border-on-background p-8 flex flex-col justify-between min-h-[400px] hard-pop transition-all cursor-crosshair"
+                className="bg-surface-container-lowest border-[4px] border-on-background p-8 flex flex-col justify-between min-h-[400px] hard-pop cursor-crosshair reveal-text"
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <div>
                   <span className="material-symbols-outlined text-[48px] text-on-background mb-8 block">
                     {service.icon}
                   </span>
                   <h3
-                    className="text-[28px] md:text-[32px] font-extrabold uppercase mb-4 leading-tight"
+                    className="text-[24px] md:text-[28px] lg:text-[20px] xl:text-[24px] font-extrabold uppercase mb-4 leading-tight"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {service.title}
@@ -179,7 +181,7 @@ export default function HomePage() {
               <div
                 key={i}
                 className="bg-on-background p-10 border-[4px] border-primary-container flex flex-col gap-6 reveal-text"
-                style={{ transitionDelay: `${0.1 * (i + 1)}s` }}
+                style={{ transitionDelay: `${i * 60}ms` }}
               >
                 <h4
                   className="text-[28px] md:text-[32px] font-extrabold uppercase text-primary-fixed"

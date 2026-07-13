@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "./TransitionLink";
 
 export default function Footer() {
   return (
@@ -29,7 +29,7 @@ export default function Footer() {
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[14px] font-bold text-surface-variant hover:text-primary-fixed transition-colors border-[2px] border-surface-variant px-4 py-2 uppercase"
+              className="text-[14px] font-bold text-surface-variant hover:text-primary-fixed border-[2px] border-surface-variant px-4 py-2 uppercase transition-[color,transform] duration-150 ease-[var(--ease-out)] active:scale-95 inline-block"
               style={{ fontFamily: "var(--font-label)" }}
             >
               {social.name}
@@ -57,7 +57,7 @@ export default function Footer() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[16px] text-surface-dim hover:text-primary-fixed uppercase"
+              className="text-[16px] text-surface-dim hover:text-primary-fixed uppercase transition-[color,transform] duration-150 ease-[var(--ease-out)] active:scale-95 inline-block origin-left"
               style={{ fontFamily: "var(--font-body)" }}
             >
               {link.label}
@@ -75,7 +75,7 @@ export default function Footer() {
             <a
               key={item}
               href="#"
-              className="text-[16px] text-surface-dim hover:text-primary-fixed uppercase"
+              className="text-[16px] text-surface-dim hover:text-primary-fixed uppercase transition-[color,transform] duration-150 ease-[var(--ease-out)] active:scale-95 inline-block origin-left"
               style={{ fontFamily: "var(--font-body)" }}
             >
               {item}

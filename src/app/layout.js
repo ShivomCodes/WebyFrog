@@ -1,5 +1,6 @@
 import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import TransitionProvider from "./components/TransitionProvider";
 
 const montserrat = Montserrat({
   variable: "--font-display",
@@ -31,7 +32,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${montserrat.variable} ${jetbrainsMono.variable} bg-background text-on-background overflow-x-hidden`}
       >
-        {children}
+        <TransitionProvider>{children}</TransitionProvider>
       </body>
     </html>
   );

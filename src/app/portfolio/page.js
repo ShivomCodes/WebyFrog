@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import Link from "../components/TransitionLink";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -53,6 +53,24 @@ export default function PortfolioPage() {
     ? projects
     : projects.filter((project) => project.categories.includes(activeFilter));
 
+  useEffect(() => {
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".reveal-text").forEach((el) => {
+      el.classList.remove("visible");
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [activeFilter]);
+
   return (
     <>
       <Navbar />
@@ -61,12 +79,12 @@ export default function PortfolioPage() {
         {/* Hero Section */}
         <header className="mb-16">
           <h1
-            className="text-[48px] md:text-[96px] font-black uppercase mb-8 leading-[0.9]"
+            className="text-[48px] md:text-[96px] font-black uppercase mb-8 leading-[0.9] reveal-text"
             style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.04em" }}
           >
             Selected Works
           </h1>
-          <div className="max-w-2xl bg-surface-container p-8 border-[4px] border-on-background neo-shadow-sm">
+          <div className="max-w-2xl bg-surface-container p-8 border-[4px] border-on-background neo-shadow-sm reveal-text" style={{ transitionDelay: "100ms" }}>
             <p
               className="text-[18px] md:text-[20px] font-medium"
               style={{ fontFamily: "var(--font-body)" }}
@@ -77,7 +95,7 @@ export default function PortfolioPage() {
         </header>
 
         {/* Filter Bar */}
-        <div className="flex flex-wrap gap-4 mb-16 items-center">
+        <div className="flex flex-wrap gap-4 mb-16 items-center reveal-text" style={{ transitionDelay: "150ms" }}>
           <span
             className="text-[14px] font-bold uppercase text-on-surface-variant"
             style={{ fontFamily: "var(--font-label)" }}
@@ -89,7 +107,7 @@ export default function PortfolioPage() {
               key={option}
               type="button"
               onClick={() => setActiveFilter(option)}
-              className={`border-[4px] border-on-background px-6 py-2 text-[14px] font-bold uppercase transition-all ${
+              className={`border-[4px] border-on-background px-6 py-2 text-[14px] font-bold uppercase transition-[background-color,color,transform,box-shadow] duration-150 ease-[var(--ease-out)] active:scale-95 ${
                 activeFilter === option
                   ? "bg-primary-container text-on-primary-container neo-shadow-sm translate-x-1 translate-y-1"
                   : "bg-background text-on-background hover:bg-surface-container"
@@ -105,13 +123,14 @@ export default function PortfolioPage() {
         <div className="masonry-grid">
           {filteredProjects.map((project, i) => (
             <div
-              key={i}
-              className="masonry-item group relative bg-background border-[4px] border-on-background neo-shadow hover:translate-x-1 hover:translate-y-1 transition-all cursor-pointer overflow-hidden active-project-card"
+              key={project.title}
+              className="masonry-item group relative bg-background border-[4px] border-on-background neo-shadow hover:translate-x-1 hover:translate-y-1 transition-[transform,box-shadow,opacity] duration-200 ease-[var(--ease-out)] cursor-pointer overflow-hidden active-project-card reveal-text"
+              style={{ transitionDelay: `${i * 60}ms` }}
             >
               <div className="h-auto overflow-hidden bg-on-background">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                  className="w-full grayscale group-hover:grayscale-0 transition-[transform,filter] duration-350 ease-[var(--ease-out)] scale-105 group-hover:scale-100"
                   src={project.image}
                   alt={project.title}
                   loading="lazy"

@@ -1,31 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import React, { useEffect } from "react";
+import Link from "../components/TransitionLink";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 export default function ProcessPage() {
-  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
-  const [isHovering, setIsHovering] = useState(false);
-
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll(".reveal-text").forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
   }, []);
 
   return (
     <>
-      <div
-        className="hidden md:block fixed w-6 h-6 border-2 border-on-background bg-primary-container z-[9999] pointer-events-none transition-transform duration-100 ease-out"
-        style={{
-          transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0) translate(-50%, -50%) ${isHovering ? "scale(2.5)" : "scale(1)"}`,
-          mixBlendMode: isHovering ? "difference" : "normal",
-        }}
-      ></div>
       <Navbar />
 
       <main className="min-h-screen pt-28 bg-background">
@@ -62,7 +59,7 @@ export default function ProcessPage() {
         <section className="px-[20px] md:px-[64px] py-32 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-[32px]">
             {/* Phase 1 */}
-            <div className="md:col-span-7 group bg-background border-[4px] border-on-background p-12 neo-shadow transition-all">
+            <div className="md:col-span-7 group bg-background border-[4px] border-on-background p-12 neo-shadow transition-[transform,box-shadow,opacity] duration-150 ease-[var(--ease-out)] active:scale-[0.98] reveal-text">
               <div className="flex justify-between items-start mb-12">
                 <div>
                   <span className="text-[14px] font-bold text-primary mb-2 block" style={{ fontFamily: "var(--font-label)" }}>PHASE 01</span>
@@ -85,10 +82,10 @@ export default function ProcessPage() {
             </div>
 
             {/* Visual Accent 1 */}
-            <div className="md:col-span-5 h-[400px] relative border-[4px] border-on-background neo-shadow overflow-hidden bg-on-background">
+            <div className="md:col-span-5 h-[400px] relative border-[4px] border-on-background neo-shadow overflow-hidden bg-on-background reveal-text" style={{ transitionDelay: "100ms" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-[transform,filter] duration-350 ease-[var(--ease-out)]"
                 src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80"
                 alt="Engineering visualization"
               />
@@ -98,7 +95,7 @@ export default function ProcessPage() {
             </div>
 
             {/* Phase 2 */}
-            <div className="md:col-span-12 bg-on-background text-background border-[4px] border-on-background p-12 neo-shadow">
+            <div className="md:col-span-12 bg-on-background text-background border-[4px] border-on-background p-12 neo-shadow reveal-text">
               <div className="grid md:grid-cols-2 gap-16 items-center">
                 <div className="space-y-8">
                   <div>
@@ -123,7 +120,7 @@ export default function ProcessPage() {
             </div>
 
             {/* Phase 3 */}
-            <div className="md:col-span-12 bg-primary-container border-[4px] border-on-background p-12 neo-shadow group">
+            <div className="md:col-span-12 bg-primary-container border-[4px] border-on-background p-12 neo-shadow group reveal-text">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                   <span className="text-[14px] font-bold text-on-primary-container mb-2 block" style={{ fontFamily: "var(--font-label)" }}>PHASE 03</span>
@@ -158,7 +155,7 @@ export default function ProcessPage() {
             </div>
 
             {/* Phase 4 */}
-            <div className="md:col-span-12 group bg-background border-[4px] border-on-background p-12 neo-shadow transition-all">
+            <div className="md:col-span-12 group bg-background border-[4px] border-on-background p-12 neo-shadow transition-[transform,box-shadow,opacity] duration-150 ease-[var(--ease-out)] active:scale-[0.98] reveal-text">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-8">
                 <div>
                   <span className="text-[14px] font-bold text-primary mb-2 block" style={{ fontFamily: "var(--font-label)" }}>PHASE 04</span>
@@ -188,8 +185,6 @@ export default function ProcessPage() {
             <h2 
               className="text-[64px] md:text-[120px] font-black mb-8 leading-[0.8] tracking-tighter uppercase" 
               style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.04em" }}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
             >
               READY TO SCALE?
             </h2>
@@ -201,8 +196,6 @@ export default function ProcessPage() {
                 href="/contact"
                 className="bg-primary-container text-on-background text-[24px] md:text-[32px] font-black px-12 py-6 border-[8px] border-background neo-shadow hover:translate-x-1 hover:translate-y-1 transition-all uppercase text-center inline-block" 
                 style={{ fontFamily: "var(--font-display)" }}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
               >
                 Start Your Project
               </Link>
@@ -210,8 +203,6 @@ export default function ProcessPage() {
                 href="/portfolio"
                 className="bg-background text-on-background text-[24px] md:text-[32px] font-black px-12 py-6 border-[8px] border-background neo-shadow hover:translate-x-1 hover:translate-y-1 transition-all uppercase text-center inline-block" 
                 style={{ fontFamily: "var(--font-display)" }}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
               >
                 View Portfolio
               </Link>

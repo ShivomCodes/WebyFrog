@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "../components/TransitionLink";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import MobileBottomNav from "../components/MobileBottomNav";
 
 const projects = [
   {
@@ -75,18 +76,18 @@ export default function PortfolioPage() {
     <>
       <Navbar />
 
-      <main className="px-[20px] md:px-[64px] py-[64px] pt-32 bg-background min-h-screen">
+      <main className="px-[16px] md:px-[64px] py-12 md:py-[64px] pt-40 md:pt-48 bg-background min-h-dvh">
         {/* Hero Section */}
-        <header className="mb-16">
+        <header className="mb-12 md:mb-16">
           <h1
-            className="text-[48px] md:text-[96px] font-black uppercase mb-8 leading-[0.9] reveal-text"
+            className="text-fluid-h1 font-black uppercase mb-6 md:mb-8 reveal-text"
             style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.04em" }}
           >
             Selected Works
           </h1>
-          <div className="max-w-2xl bg-surface-container p-8 border-[4px] border-on-background neo-shadow-sm reveal-text" style={{ transitionDelay: "100ms" }}>
+          <div className="max-w-2xl bg-surface-container p-6 md:p-8 border-[3px] md:border-[4px] border-on-background neo-shadow-sm reveal-text" style={{ transitionDelay: "100ms" }}>
             <p
-              className="text-[18px] md:text-[20px] font-medium"
+              className="text-[16px] md:text-[20px] font-medium"
               style={{ fontFamily: "var(--font-body)" }}
             >
               Engineering precision meets raw creative disruption. Explore our latest product design and web engineering projects.
@@ -94,29 +95,31 @@ export default function PortfolioPage() {
           </div>
         </header>
 
-        {/* Filter Bar */}
-        <div className="flex flex-wrap gap-4 mb-16 items-center reveal-text" style={{ transitionDelay: "150ms" }}>
-          <span
-            className="text-[14px] font-bold uppercase text-on-surface-variant"
-            style={{ fontFamily: "var(--font-label)" }}
-          >
-            Filter by:
-          </span>
-          {filterOptions.map((option) => (
-            <button
-              key={option}
-              type="button"
-              onClick={() => setActiveFilter(option)}
-              className={`border-[4px] border-on-background px-6 py-2 text-[14px] font-bold uppercase transition-[background-color,color,transform,box-shadow] duration-150 ease-[var(--ease-out)] active:scale-95 ${
-                activeFilter === option
-                  ? "bg-primary-container text-on-primary-container neo-shadow-sm translate-x-1 translate-y-1"
-                  : "bg-background text-on-background hover:bg-surface-container"
-              }`}
+        {/* Filter Bar - Horizontal Scroll on Mobile */}
+        <div className="mb-12 md:mb-16 reveal-text overflow-x-auto no-scrollbar -mx-[16px] px-[16px] md:mx-0 md:px-0" style={{ transitionDelay: "150ms" }}>
+          <div className="flex gap-3 md:gap-4 items-center min-w-max md:min-w-0 pb-2">
+            <span
+              className="text-[12px] md:text-[14px] font-bold uppercase text-on-surface-variant shrink-0"
               style={{ fontFamily: "var(--font-label)" }}
             >
-              {option}
-            </button>
-          ))}
+              Filter by:
+            </span>
+            {filterOptions.map((option) => (
+              <button
+                key={option}
+                type="button"
+                onClick={() => setActiveFilter(option)}
+                className={`border-[3px] md:border-[4px] border-on-background px-5 md:px-6 py-2.5 md:py-2 text-[12px] md:text-[14px] font-bold uppercase transition-[background-color,color,transform,box-shadow] duration-150 ease-[var(--ease-out)] active:scale-95 touch-target shrink-0 ${
+                  activeFilter === option
+                    ? "bg-primary-container text-on-primary-container neo-shadow-sm translate-x-1 translate-y-1"
+                    : "bg-background text-on-background hover:bg-surface-container"
+                }`}
+                style={{ fontFamily: "var(--font-label)" }}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Portfolio Masonry Grid */}
@@ -124,7 +127,7 @@ export default function PortfolioPage() {
           {filteredProjects.map((project, i) => (
             <div
               key={project.title}
-              className="masonry-item group relative bg-background border-[4px] border-on-background neo-shadow hover:translate-x-1 hover:translate-y-1 transition-[transform,box-shadow,opacity] duration-200 ease-[var(--ease-out)] cursor-pointer overflow-hidden active-project-card reveal-text"
+              className="masonry-item group relative bg-background border-[3px] md:border-[4px] border-on-background neo-shadow hover:translate-x-1 hover:translate-y-1 transition-[transform,box-shadow,opacity] duration-200 ease-[var(--ease-out)] cursor-pointer overflow-hidden active-project-card reveal-text press-effect"
               style={{ transitionDelay: `${i * 60}ms` }}
             >
               <div className="h-auto overflow-hidden bg-on-background">
@@ -136,30 +139,30 @@ export default function PortfolioPage() {
                   loading="lazy"
                 />
               </div>
-              <div className="p-8 border-t-[4px] border-on-background bg-background">
-                <div className="flex justify-between items-start mb-6">
+              <div className="p-5 md:p-8 border-t-[3px] md:border-t-[4px] border-on-background bg-background">
+                <div className="flex justify-between items-start mb-4 md:mb-6 gap-3">
                   <h3
-                    className="text-[32px] md:text-[40px] font-black uppercase leading-none"
+                    className="text-[24px] md:text-[40px] font-black uppercase leading-none"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {project.title}
                   </h3>
                   <span
-                    className="text-[12px] font-bold border-[2px] border-on-background px-3 py-1 bg-primary-container text-on-primary-container"
+                    className="text-[10px] md:text-[12px] font-bold border-[2px] border-on-background px-2 md:px-3 py-1 bg-primary-container text-on-primary-container shrink-0"
                     style={{ fontFamily: "var(--font-label)" }}
                   >
                     {project.tag}
                   </span>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   <p
-                    className="text-primary font-black text-[14px] uppercase tracking-widest"
+                    className="text-primary font-black text-[12px] md:text-[14px] uppercase tracking-widest"
                     style={{ fontFamily: "var(--font-label)" }}
                   >
                     {project.subtitle}
                   </p>
                   <p
-                    className="text-[16px] text-on-surface-variant leading-relaxed"
+                    className="text-[14px] md:text-[16px] text-on-surface-variant leading-relaxed"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
                     {project.desc}
@@ -172,28 +175,28 @@ export default function PortfolioPage() {
       </main>
 
       {/* CTA Section */}
-      <section className="bg-primary-container px-[20px] md:px-[64px] py-32 border-t-[8px] border-on-background text-on-primary-container text-center">
+      <section className="bg-primary-container px-[16px] md:px-[64px] py-20 md:py-32 border-t-[4px] md:border-t-[8px] border-on-background text-on-primary-container text-center pb-bottom-nav md:pb-0">
         <div className="max-w-4xl mx-auto">
           <h2
-            className="text-[48px] md:text-[96px] font-black uppercase mb-8 leading-[0.9]"
+            className="text-fluid-h1 font-black uppercase mb-6 md:mb-8"
             style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.04em" }}
           >
             Ready to disrupt?
           </h2>
-          <p className="text-[18px] md:text-[24px] mb-16 font-medium max-w-2xl mx-auto" style={{ fontFamily: "var(--font-body)" }}>
+          <p className="text-fluid-body mb-12 md:mb-16 font-medium max-w-2xl mx-auto" style={{ fontFamily: "var(--font-body)" }}>
             We don&apos;t do subtle. We do precision. Let&apos;s build something that demands attention.
           </p>
-          <div className="flex flex-col md:flex-row justify-center gap-8">
+          <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8">
             <Link
               href="/contact"
-              className="bg-on-background text-background px-12 py-6 text-[24px] md:text-[32px] font-black uppercase neo-shadow hover:translate-x-2 hover:translate-y-2 active:translate-x-4 active:translate-y-4 transition-all text-center inline-block"
+              className="bg-on-background text-background px-8 md:px-12 py-5 md:py-6 text-[20px] md:text-[32px] font-black uppercase neo-shadow hover:translate-x-2 hover:translate-y-2 active:translate-x-4 active:translate-y-4 transition-all text-center inline-block touch-target"
               style={{ fontFamily: "var(--font-display)" }}
             >
               START A PROJECT
             </Link>
             <Link
               href="/process"
-              className="bg-background text-on-background border-[4px] border-on-background px-12 py-6 text-[24px] md:text-[32px] font-black uppercase neo-shadow hover:translate-x-2 hover:translate-y-2 active:translate-x-4 active:translate-y-4 transition-all text-center inline-block"
+              className="bg-background text-on-background border-[3px] md:border-[4px] border-on-background px-8 md:px-12 py-5 md:py-6 text-[20px] md:text-[32px] font-black uppercase neo-shadow hover:translate-x-2 hover:translate-y-2 active:translate-x-4 active:translate-y-4 transition-all text-center inline-block touch-target"
               style={{ fontFamily: "var(--font-display)" }}
             >
               OUR PROCESS
@@ -203,6 +206,7 @@ export default function PortfolioPage() {
       </section>
 
       <Footer />
+      <MobileBottomNav />
     </>
   );
 }

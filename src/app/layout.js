@@ -18,16 +18,29 @@ export const metadata = {
   title: "WEBYFROG | Digital Brutality",
   description:
     "Webyfrog is a precision-engineered digital agency. We build high-performance systems for brands that value impact over aesthetics.",
+  appleMobileWebAppCapable: "yes",
+  appleMobileWebAppStatusBarStyle: "black-translucent",
+  formatDetection: "telephone=no",
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#1b1b1b",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body
         className={`${montserrat.variable} ${jetbrainsMono.variable} bg-background text-on-background overflow-x-hidden`}

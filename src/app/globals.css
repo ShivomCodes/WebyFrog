@@ -331,3 +331,240 @@ select:focus {
   background-color: var(--color-primary-container);
   border-width: 4px;
 }
+
+/* ===== PWA-RESPONSIVE SYSTEM ===== */
+
+/* --- Safe Area Insets (notch, home indicator) --- */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+/* --- Overscroll Behavior: prevent bounce, feel like native app --- */
+html {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+/* --- Prevent text selection on interactive elements (native feel) --- */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* --- PWA-like smooth scroll snapping --- */
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-snap-y {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 100px;
+}
+
+.snap-center {
+  scroll-snap-align: center;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+/* --- Touch Target Minimums (44px for accessibility) --- */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* --- Fluid Typography: clamp(min, preferred, max) --- */
+.text-fluid-hero {
+  font-size: clamp(40px, 10vw, 120px);
+  line-height: 0.9;
+}
+
+.text-fluid-h1 {
+  font-size: clamp(36px, 8vw, 96px);
+  line-height: 0.95;
+}
+
+.text-fluid-h2 {
+  font-size: clamp(32px, 6vw, 72px);
+  line-height: 1;
+}
+
+.text-fluid-h3 {
+  font-size: clamp(24px, 4vw, 48px);
+  line-height: 1.1;
+}
+
+.text-fluid-body {
+  font-size: clamp(16px, 2.5vw, 20px);
+  line-height: 1.6;
+}
+
+.text-fluid-body-lg {
+  font-size: clamp(18px, 3vw, 24px);
+  line-height: 1.5;
+}
+
+.text-fluid-cta {
+  font-size: clamp(20px, 4vw, 32px);
+  line-height: 1.2;
+}
+
+.text-fluid-label {
+  font-size: clamp(12px, 1.5vw, 14px);
+  line-height: 1.4;
+}
+
+/* --- Mobile Bottom Nav Safe Area Padding --- */
+.pb-bottom-nav {
+  padding-bottom: calc(72px + var(--sab));
+}
+
+/* --- Viewport Height Fix (100dvh for mobile) --- */
+.min-h-dvh {
+  min-height: 100dvh;
+}
+
+.h-dvh {
+  height: 100dvh;
+}
+
+/* --- PWA-style backdrop blur --- */
+.backdrop-blur-brutal {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* --- Slide-in Panel (PWA drawer pattern) --- */
+.slide-in-right {
+  animation: slideInRight 0.3s var(--ease-out) forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.25s var(--ease-out) forwards;
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* --- Fade In/Out for overlays --- */
+.fade-in {
+  animation: fadeIn 0.2s var(--ease-out) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-out {
+  animation: fadeOut 0.2s var(--ease-out) forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* --- Scale In for modals/drawers (spring-like) --- */
+.scale-in {
+  animation: scaleIn 0.3s var(--ease-out) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* --- PWA Status Bar Spacer --- */
+.pt-safe {
+  padding-top: var(--sat);
+}
+
+.pb-safe {
+  padding-bottom: var(--sab);
+}
+
+/* --- Focus Visible (keyboard accessibility) --- */
+:focus-visible {
+  outline: 3px solid var(--color-primary-container);
+  outline-offset: 2px;
+}
+
+/* --- Better Input Zoom Prevention on iOS --- */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="number"],
+textarea,
+select {
+  font-size: 16px !important;
+}
+
+/* --- Responsive padding utility --- */
+.px-responsive {
+  padding-left: clamp(16px, 5vw, 64px);
+  padding-right: clamp(16px, 5vw, 64px);
+}
+
+.py-responsive {
+  padding-top: clamp(48px, 8vw, 128px);
+  padding-bottom: clamp(48px, 8vw, 128px);
+}
+
+/* --- Gap utilities that scale --- */
+.gap-responsive {
+  gap: clamp(16px, 4vw, 32px);
+}
+
+/* --- PWA-like card press effect (touch feedback) --- */
+.press-effect {
+  transition: transform 0.15s var(--ease-press), opacity 0.15s var(--ease-press);
+}
+
+.press-effect:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+/* --- Hide scrollbar for cleaner PWA feel --- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

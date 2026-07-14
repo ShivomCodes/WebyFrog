@@ -178,7 +178,7 @@ export default function AboutPage() {
                   {value.title}
                 </h3>
                 <p
-                  className={`text-[12px] md:text-[14px] font-black uppercase tracking-widest leading-relaxed ${value.text === 'text-on-background' ? 'text-on-surface-variant' : 'opacity-80'}`}
+                  className={`text-[12px] md:text-[14px] font-black uppercase tracking-widest leading-relaxed ${value.text === 'text-on-background' ? 'text-on-surface-variant' : `${value.text} opacity-80`}`}
                   style={{ fontFamily: "var(--font-label)" }}
                 >
                   {value.desc}

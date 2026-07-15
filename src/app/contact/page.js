@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { submitContactBrief } from "../actions/contact";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MobileBottomNav from "../components/MobileBottomNav";
@@ -48,7 +49,7 @@ function BriefForm() {
     }
   }, [serviceParam]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.scope || !formState.mission) {
       alert("PLEASE COMPLETE ALL DATA FIELDS BEFORE DEPLOYMENT.");
@@ -57,6 +58,13 @@ function BriefForm() {
 
     setStatus("submitting");
     setConsoleLogs([]);
+
+    const result = await submitContactBrief(formState);
+    if (!result.success) {
+      alert("ERROR: " + (result.error || "Deployment failed."));
+      setStatus("idle");
+      return;
+    }
 
     const logs = [
       "INITIALIZING SECURE BROADCAST PROTOCOL...",

@@ -13,8 +13,7 @@ const projects = [
     categories: ["Web", "Design"],
     subtitle: "ENGINEERING A NEW FINANCIAL ECOSYSTEM",
     desc: "Full-scale digital transformation including core banking dashboard and mobile app design systems.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBygqnQpYBE6S921nEG55JZxWRsiU0sx1yV20cpbPbVUxCx_aMeX50zsIUvR-crjEq_6ZzuVrJTY1swLJKB86hj0u4nozwYGjt0M1qpWs0-C2i2IQeRAyfg2Y2H0-pWQc8io0b8aZrhUaqfah9kZwxi6ayYWHqWaT1otjQ2HUr6Ny6j9L1V8k4RJdcb3rdvBbAe3afUKzHyhkwduerk-hootU67j8xnOoDfwxUloN09Tcf3cjaZuUbVavreyO90mCz7Gn35BRc5u_np",
+    image: "/vortex-project.png",
   },
   {
     title: "Pulse Health",
@@ -22,8 +21,7 @@ const projects = [
     categories: ["App", "Design"],
     subtitle: "REAL-TIME BIOMETRIC TRACKING",
     desc: "Designed for high-pressure medical environments with maximum legibility and zero-latency visual feedback.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCrKTeZjVE6iYxnfodeRFaxHFN8vB1GrzhaGuN7xQrsKhqNMzs6gtnyvpK6i4PC5_EMy9zv6QcDYrCl5oRlSCk1-LjnCifhwwrPkPHrAPkulQv4NZikWQTuKGqthZ48MDdw_lpKrJgm-FD-9u5wAvqv19ukoVy_WxxV-bcPs5uXTCMX2gXr5kydSIVTrlBgH7gsQz_-6iNFt_XKSH-5c6v8Pf05pEJPhjycPnsGeNWEymfv0cT-CDR4vmL5fqMvvj7NsSAQM7TipGZ1",
+    image: "/pulse-project.png",
   },
   {
     title: "LogiFlow AI",
@@ -31,8 +29,7 @@ const projects = [
     categories: ["AI", "Web"],
     subtitle: "PREDICTIVE LOGISTICS ARCHITECTURE",
     desc: "Optimizing global supply chains using raw data visualization and aggressive functionalism.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAtJ2sWo5lK8dS5V-OpPmJrXtiniDg94lZPwDTiLotZouIFsH4ieKP8fQpYLdEPXjiUTGOWUGXMc50MJu_6Jj0k8i9Tc9PUarddppMGgdhuerOaXRebl9QY3wVkxq0vtLfL1yV4B-xHR68iylF5jwckGP8pb8Tpsjj8fYWcixDj6U8UShddsffuNOV-CTSd54VrtwpagDRXjHusTKluOUXKYyW3VqKHWu5atHKbgmb2ZurfS8oLAuVYZPn1CXDFfKMupOStGlULMTGY",
+    image: "/logiflow-project.png",
   },
   {
     title: "Atelier Noir",
@@ -40,8 +37,7 @@ const projects = [
     categories: ["Web", "Design"],
     subtitle: "DISRUPTIVE DIGITAL RETAIL",
     desc: "Breaking traditional e-commerce patterns with a raw, high-fashion structural identity.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC8OW_cpCdxIJ-MPlcb9E_KspxSwzSPuPSt5aYkBvpfsPS82DlFeRFsaMuMZm7cYkssULK7INu2AhmM40TN8CIW-_qimfQDRQq5uDpteHcEUXWdA-Wzqt7OgriiPJK_FvRfQr-6NAp0swkbhUkl8vD1QgzMbQBIMth4RMCMjIh42bXnfMU0E1MQiviljWg8Z_XAsattJmdpea6stABnzDvYmQQ4ypYc15esD0lKrc5VX0cNDvuEScQg8r0-MqH2IWRy2E7WEB7U4y1H",
+    image: "/atelier-project.png",
   },
 ];
 

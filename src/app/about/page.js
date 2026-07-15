@@ -6,31 +6,39 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MobileBottomNav from "../components/MobileBottomNav";
 
-const teamMembers = [
+const arsenalItems = [
   {
-    name: "M. FROST",
-    role: "Lead Eng.",
-    specialty: "System Architecture & Core",
-    image: "/team-frost.png",
+    title: "Core Stack",
+    desc: "Next.js, React, and raw CSS. We bypass bloated frameworks to deliver pure, unadulterated speed directly to the DOM.",
+    icon: "memory",
+    bg: "bg-background",
+    text: "text-on-background",
+    iconColor: "text-primary"
   },
   {
-    name: "E. VANCE",
-    role: "Director",
-    specialty: "Visual Identity & Motion",
-    image: "/team-vance.png",
+    title: "Infrastructure",
+    desc: "Edge computing, serverless architectures, and globally distributed CDNs. Zero downtime. Zero latency.",
+    icon: "dns",
+    bg: "bg-on-background",
+    text: "text-background",
+    iconColor: "text-primary-container"
   },
   {
-    name: "S. CHEN",
-    role: "Strategist",
-    specialty: "Growth & Data Analytics",
-    image: "/team-chen.png",
+    title: "Design Systems",
+    desc: "Algorithmic token generation and strict atomic design principles ensure mathematical consistency across all interfaces.",
+    icon: "design_services",
+    bg: "bg-primary-container",
+    text: "text-on-primary-container",
+    iconColor: "text-on-background"
   },
   {
-    name: "A. BLYTHE",
-    role: "Architect",
-    specialty: "UX / Product Logic",
-    image: "/team-blythe.png",
-  },
+    title: "Data Pipelines",
+    desc: "Real-time analytics and telemetry. We monitor every interaction to continually optimize the conversion architecture.",
+    icon: "analytics",
+    bg: "bg-surface-container",
+    text: "text-on-background",
+    iconColor: "text-primary"
+  }
 ];
 
 export default function AboutPage() {
@@ -182,57 +190,34 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* The Team Section */}
+        {/* The Arsenal Section */}
         <section className="px-[16px] md:px-[64px] py-20 md:py-32 bg-surface-container-lowest pb-bottom-nav md:pb-0">
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-12 md:mb-20 gap-6 md:gap-12 border-b-[3px] md:border-b-[4px] border-on-background pb-8 md:pb-12">
             <h2
               className="text-fluid-h1 font-black uppercase tracking-tighter"
               style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
             >
-              The Operatives
+              The Arsenal
             </h2>
             <p
               className="text-[16px] md:text-[18px] max-w-sm text-on-surface-variant uppercase font-black tracking-widest leading-relaxed"
               style={{ fontFamily: "var(--font-body)" }}
             >
-              A tight-knit unit of developers, designers, and strategists.
+              Tools of the trade for raw performance.
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12">
-            {teamMembers.map((member, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+            {arsenalItems.map((item, i) => (
               <div
                 key={i}
-                className="border-[4px] md:border-[6px] border-on-background bg-background overflow-hidden group neo-shadow-sm hover:neo-shadow transition-[transform,box-shadow,opacity] duration-150 ease-[var(--ease-out)] active:scale-[0.98] reveal-text"
-                style={{ transitionDelay: `${i * 50}ms` }}
+                className={`p-8 md:p-12 border-[4px] md:border-[6px] border-on-background ${item.bg} ${item.text} neo-shadow-sm hover:neo-shadow transition-[transform,box-shadow,opacity] duration-150 ease-[var(--ease-out)] active:scale-[0.98] flex flex-col justify-center items-start reveal-text press-effect`}
+                style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <div className="aspect-[3/4] bg-on-background relative overflow-hidden">
-                  <div
-                    className="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-105 transition-[transform,filter] duration-350 ease-[var(--ease-out)]"
-                    style={{ backgroundImage: `url('${member.image}')` }}
-                  ></div>
-                  <div className="absolute bottom-0 left-0 bg-primary-container p-2 md:p-3 border-t-[3px] md:border-t-[4px] border-r-[3px] md:border-r-[4px] border-on-background">
-                    <span
-                      className="text-[9px] md:text-[12px] font-black uppercase tracking-widest text-on-background"
-                      style={{ fontFamily: "var(--font-label)" }}
-                    >
-                      {member.role}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-4 md:p-8">
-                  <h4
-                    className="text-[18px] md:text-[32px] font-black uppercase mb-1 md:mb-2 leading-none"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {member.name}
-                  </h4>
-                  <p
-                    className="text-[9px] md:text-[12px] text-on-surface-variant uppercase font-bold tracking-widest"
-                    style={{ fontFamily: "var(--font-label)" }}
-                  >
-                    {member.specialty}
-                  </p>
-                </div>
+                <span className={`material-symbols-outlined text-[60px] md:text-[80px] ${item.iconColor} mb-6`}>{item.icon}</span>
+                <h3 className="text-[24px] md:text-[32px] font-black uppercase mb-4" style={{ fontFamily: "var(--font-display)" }}>{item.title}</h3>
+                <p className={`text-[16px] md:text-[18px] font-medium leading-relaxed ${item.bg === 'bg-background' || item.bg === 'bg-surface-container' ? 'text-on-surface-variant' : 'opacity-90'}`} style={{ fontFamily: "var(--font-body)" }}>
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>

@@ -117,7 +117,7 @@ export default function HomePage() {
             {[
               { icon: "terminal", title: "Website Dev", desc: "Uncompromising speed. Structural integrity. Built for conversion.", tag: "CODE READY" },
               { icon: "smartphone", title: "App Dev", desc: "Native-feel performance. Brutally efficient user flows.", tag: "IOS / ANDROID" },
-              { icon: "settings_suggest", title: "Automations", desc: "Eliminate friction. Liquidate manual labor. Scale without limits.", tag: "FLOW STATE" },
+              { icon: "settings_suggest", title: "Automation", desc: "Eliminate friction. Liquidate manual labor. Scale without limits.", tag: "FLOW STATE" },
               { icon: "memory", title: "AI B2B SaaS", desc: "Custom intelligence layers. Enterprise-grade AI implementation.", tag: "CORE AI" },
               { icon: "architecture", title: "Design", desc: "Visual dominance. High-contrast hierarchies. Functional beauty.", tag: "UX/UI ARMOR" },
             ].map((service, i) => (
@@ -162,7 +162,7 @@ export default function HomePage() {
               className="text-fluid-h1 font-black uppercase tracking-tighter mb-6 md:mb-8 reveal-text"
               style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.04em" }}
             >
-              Why Webyfrog?
+              Why Webyfrog
             </h2>
             <p
               className="text-fluid-body-lg text-surface-variant mb-8 md:mb-12 reveal-text border-l-[4px] md:border-l-[8px] border-primary-container pl-6 md:pl-8"

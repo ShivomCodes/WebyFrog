@@ -80,10 +80,14 @@ export default function Navbar() {
         <div className="flex justify-between items-center max-w-full mx-auto">
           <Link
             href="/"
-            className="text-[20px] md:text-[32px] font-black text-on-background tracking-tighter uppercase no-select"
-            style={{ fontFamily: "var(--font-display)" }}
+            className="flex items-center no-select"
           >
-            WEBYFROG
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt="WEBYFROG Logo"
+              className="h-[72px] md:h-[96px] w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Links */}

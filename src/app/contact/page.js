@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MobileBottomNav from "../components/MobileBottomNav";
+import { siteConfig } from "../../config";
 
 function BriefForm() {
   const searchParams = useSearchParams();
@@ -86,7 +87,7 @@ function BriefForm() {
         <div className="space-y-3 md:space-y-4">
           <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6 border-b-2 border-primary-container/30 pb-3 md:pb-4">
             <span className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-primary-fixed animate-ping"></span>
-            <span className="font-black text-primary-container text-[12px] md:text-[14px]">COMMS PROTOCOL LIVE RUN</span>
+            <span className="font-black text-primary-container text-[12px] md:text-[14px]">COMMS CHANNEL LIVE RUN</span>
           </div>
           <div className="space-y-2 text-xs md:text-base leading-relaxed max-h-[300px] md:max-h-[350px] overflow-y-auto">
             {consoleLogs.map((log, i) => (
@@ -342,10 +343,10 @@ export default function ContactPage() {
                   </span>
                   <a
                     className="text-[18px] md:text-[24px] font-black hover:text-primary transition-all break-all"
-                    href="mailto:hello@webyfrog.agency"
+                    href={`mailto:${siteConfig.contact.email}`}
                     style={{ fontFamily: "var(--font-display)" }}
                   >
-                    hello@webyfrog.agency
+                    {siteConfig.contact.email}
                   </a>
                 </div>
                 <div>
@@ -359,27 +360,10 @@ export default function ContactPage() {
                     className="text-[18px] md:text-[20px] uppercase font-black"
                     style={{ fontFamily: "var(--font-body)" }}
                   >
-                    NYC / Berlin
+                    {siteConfig.contact.hqBase}
                   </p>
                 </div>
-                <div className="flex gap-4 md:gap-6 pt-3 md:pt-4">
-                  {[
-                    { icon: "share", label: "Twitter", url: "https://twitter.com/webyfrog" },
-                    { icon: "public", label: "Website", url: "https://webyfrog.agency" },
-                    { icon: "alternate_email", label: "Email", url: "mailto:hello@webyfrog.agency" },
-                  ].map((social) => (
-                    <a
-                      key={social.icon}
-                      className="w-11 h-11 md:w-14 md:h-14 flex items-center justify-center border-[3px] md:border-[4px] border-on-background bg-background hover:bg-primary-container transition-all neo-shadow-sm active:translate-y-1 touch-target"
-                      href={social.url}
-                      target={social.url.startsWith("mailto:") ? undefined : "_blank"}
-                      rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                      aria-label={social.label}
-                    >
-                      <span className="material-symbols-outlined text-[22px] md:text-3xl">{social.icon}</span>
-                    </a>
-                  ))}
-                </div>
+
               </div>
             </div>
           </div>

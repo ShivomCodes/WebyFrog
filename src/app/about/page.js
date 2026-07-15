@@ -11,29 +11,25 @@ const teamMembers = [
     name: "M. FROST",
     role: "Lead Eng.",
     specialty: "System Architecture & Core",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDx7dxBxv02vEjUg59XZJbTbKlHXw2lXgBHE_riKIR5wevq_Rm35MQXB89a4b_Q61k3f3b35GZ5DaGckyI-362nGXCbb76m1wsXUopAwX6F6K4zNl4Q9qdHVgcYwe-S2BT53x41JHb7-WKx5SEXWtLEKECqgyvIzTMhg8Z_rCDFJh4OZYO9NwIMJHCkBkfV2l0xGPWGFnM_5iTi66oy6ru4Bq58QX_MYPC_53i1i9crKHmDJ0LY6gxF55-AAOaUSRjSJOvY-VpvzbBx",
+    image: "/team-frost.png",
   },
   {
     name: "E. VANCE",
     role: "Director",
     specialty: "Visual Identity & Motion",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAF0B1Ze16tQvm33TdoLNMYz0fwiqXvRd3145vM_HYK-85DUVDOb-PTsVxQqaWmIrn8AFk9iF5hGNx-7fHy64x1ILeVGg0jmRcO79SRpnw9ZNaYTSlY139e01CMLSjnLCJTkfc55FDphUABjGjqGo0GTXN-pP7msWbjwrkMkPba7g5r9GvqMANLtL6DSFERtMUCc8a-GhNLZ3ePNYx7WBJ7s2PxTuDnpr04Ke1XrJmkb7dmg-k5cLWrDlSw5hBKvn9z2JEZdsaN9d_V",
+    image: "/team-vance.png",
   },
   {
     name: "S. CHEN",
     role: "Strategist",
     specialty: "Growth & Data Analytics",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCem1eUEFTKXnBEldmNZxuVlrnfNOWqKAJtDGaPjMF5oeHl3kgzYB0XnMb7yauvFhC-9ftqBWPov1xRHEEzJWd_P68Cyi0qfhHcePX1MploHLEipLHJGHU9HOUpKAWX8w914gj91rf8lx2qngq6AYAR_pVG1Lg0D5HnRvwvENHiewPvwrYTu2ILQRShyATkr2EEswRaIgGiylFWDAUzARAsOV4dHvC4cfMBWLh7vpmxVh9L2en3nanBJ85yWguOOQVKt2jrkL1QYPW6",
+    image: "/team-chen.png",
   },
   {
     name: "A. BLYTHE",
     role: "Architect",
     specialty: "UX / Product Logic",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDefjaMnrKV9SbUe8BCb5QsmPVcto1RQ926a7eKKWOWOqfvhIhJ_V_FOBh3OtAP3wjzF9SrRYrRJmpjXsYIHQVKQBgD64fuBNe8_Qlot9PTcuwUICZbSUmG7pMTnjlcstODeRR8VF_xGukz8dZCr-UGex2ES-c4Uamg4V9wh6_8XU3i0JrLTvL6SDxicXDnGL9KI7SHZmdQCulXYOz_VlPjd5QNVLF-IhsokJYz3jSb8W6ObnZP24quA2rAc4VqF2Vf5rQ91-PLhmUa",
+    image: "/team-blythe.png",
   },
 ];
 
@@ -88,8 +84,7 @@ export default function AboutPage() {
               <div
                 className="w-full h-full bg-cover bg-center grayscale border-[3px] md:border-[4px] border-on-background shadow-none"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80')",
+                  backgroundImage: "url('/about-hero-bg.png')",
                 }}
               ></div>
             </div>
@@ -141,8 +136,7 @@ export default function AboutPage() {
               <div
                 className="w-full h-full bg-cover bg-center grayscale opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80')",
+                  backgroundImage: "url('/about-philosophy-bg.png')",
                 }}
               ></div>
             </div>

@@ -51,8 +51,7 @@ export default function ServicesPage() {
               <div
                 className="w-full aspect-video border-[4px] md:border-[8px] border-on-background neo-shadow bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80')",
+                  backgroundImage: "url('/web-service-bg.png')",
                 }}
               ></div>
             </div>
@@ -117,8 +116,7 @@ export default function ServicesPage() {
               <div
                 className="w-full aspect-video border-[4px] md:border-[8px] border-primary-container neo-shadow bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=80')",
+                  backgroundImage: "url('/mobile-service-bg.png')",
                 }}
               ></div>
             </div>
@@ -225,8 +223,7 @@ export default function ServicesPage() {
               <div
                 className="w-full aspect-video border-[4px] md:border-[8px] border-primary-container neo-shadow bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80')",
+                  backgroundImage: "url('/automation-service-bg.png')",
                 }}
               ></div>
             </div>
@@ -240,8 +237,7 @@ export default function ServicesPage() {
               <div
                 className="w-full aspect-video border-[4px] md:border-[8px] border-on-background neo-shadow bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
                 style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80')",
+                  backgroundImage: "url('/design-service-bg.png')",
                 }}
               ></div>
             </div>

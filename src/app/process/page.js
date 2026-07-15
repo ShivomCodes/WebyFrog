@@ -87,7 +87,7 @@ export default function ProcessPage() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 className="w-full h-full object-cover grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-[transform,filter] duration-350 ease-[var(--ease-out)]"
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80"
+                src="/process-phase1-bg.png"
                 alt="Engineering visualization"
               />
               <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 bg-primary-container text-on-primary-container border-[2px] md:border-[3px] border-on-background px-3 md:px-4 py-1.5 md:py-2 text-[10px] md:text-[14px] font-bold" style={{ fontFamily: "var(--font-label)" }}>

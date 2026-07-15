@@ -29,10 +29,9 @@ export default function HomePage() {
       <header className="relative min-h-dvh flex items-center justify-center pt-24 overflow-hidden bg-on-background">
         <div className="absolute inset-0 z-0 opacity-40">
           <div
-            className="w-full h-full bg-cover bg-center grayscale"
+            className="w-full h-full bg-cover bg-center grayscale opacity-80"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1600&q=80')",
+              backgroundImage: "url('/hero-bg.png')",
             }}
           ></div>
           <div className="absolute inset-0 bg-gradient-to-t from-on-background to-transparent"></div>
